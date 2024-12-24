@@ -1,20 +1,18 @@
 import React, {useState, useEffect } from 'react';
 
-export default function Ejercicio4(){
+export default function DetectorVentana(){
 
-    const [hora, setHora] = useState(new Date().toLocaleTimeString());
+    const [ancho, setAncho] = useState(window.innerWidth);
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            setHora(new Date().toLocaleTimeString()); 
-          }, 1000);
-
-          return(clearInterval(intervalId))
+        window.addEventListener('resize', () =>
+            setAncho(window.innerWidth)
+        )
     },[]);
 
     return(
         <div>
-            <h1>La hora actual es: {hora}</h1>
+            <h1>El ancho actual de la pantalla es: {ancho}</h1>
         </div>
     )
 }
